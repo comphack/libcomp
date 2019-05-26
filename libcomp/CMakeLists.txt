@@ -778,6 +778,14 @@ OBJGEN_XML(${PROJECT_NAME}_STRUCTS
     MiMultiTalkCmdTbl.h
     MiCMultiTalkData.cpp
     MiCMultiTalkData.h
+    MiCMultiTalkDirectionData.h
+    MiCMultiTalkDirectionData.cpp
+    MiCMultiTalkPopData.h
+    MiCMultiTalkPopData.cpp
+    MiMultiTalkPopCameraTbl.h
+    MiMultiTalkPopCameraTbl.cpp
+    MiMultiTalkPopCharaTbl.h
+    MiMultiTalkPopCharaTbl.cpp
     MiCMessageData.cpp
     MiCMessageData.h
     MiCPolygonMovieData.cpp
