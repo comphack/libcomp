@@ -310,6 +310,7 @@ SET(${PROJECT_NAME}_SCHEMA
     schema/binarydata/cculturedata.xml
     schema/binarydata/cdevilbookbonusdata.xml
     schema/binarydata/cdevilbookbonusmitamadata.xml
+    schema/binarydata/cdevilboosticondata.xml
     schema/binarydata/cdevildungeondata.xml
     schema/binarydata/cdevilequipmentexclusivedata.xml
     schema/binarydata/cequipmodeldata.xml
@@ -733,6 +734,8 @@ OBJGEN_XML(${PROJECT_NAME}_STRUCTS
     MiCDevilBookBonusData.cpp
     MiCDevilBookBonusMitamaData.h
     MiCDevilBookBonusMitamaData.cpp
+    MiCDevilBoostIconData.h
+    MiCDevilBoostIconData.cpp
     MiCDevilDungeonData.h
     MiCDevilDungeonData.cpp
     MiCDevilEquipmentExclusiveData.h
