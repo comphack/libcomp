@@ -8,7 +8,7 @@ source "ci/global.sh"
 # Dependencies
 #
 
-cd "${ROOT_DIR}/libcomp"
+cd "${ROOT_DIR}"
 mkdir build
 cd build
 
@@ -22,7 +22,7 @@ echo "Installed external dependencies"
 # Build
 #
 
-cd "${ROOT_DIR}/libcomp/build"
+cd "${ROOT_DIR}/build"
 
 echo "Running cmake"
 cmake -DCMAKE_INSTALL_PREFIX="${ROOT_DIR}/build/install" \
@@ -36,6 +36,8 @@ cmake --build . --target package
 echo "Copying package to cache for next stage"
 
 mv libcomp-*.tar.bz2 "libcomp-${PLATFORM}.tar.bz2"
+
+set +x
 
 if [ "$CMAKE_GENERATOR" != "Ninja" ]; then
     if [[ ! -z "$DROPBOX_OAUTH_BEARER" ]]; then
