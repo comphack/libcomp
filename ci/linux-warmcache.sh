@@ -40,5 +40,3 @@ fi
 # Just for debug to make sure the cache is setup right
 echo "State of cache:"
 ls -lh
-
-https://www.dropbox.com/sh/ewvvr813xfw0d13/AAAZjMFWSKnolyj4ZcLGkew4a?dl=0
