@@ -29,9 +29,11 @@ export PATH="${ROOT_DIR}/build/doxygen;${PATH}"
 echo "Installed Doxygen"
 
 echo "Installing OpenSSL"
-start /wait msiexec /i "${CACHE_DIR}/OpenSSL-${OPENSSL_VERSION}-${PLATFORM}.msi" /l*v OpenSSL-install.log /qn
+cp "${CACHE_DIR}/OpenSSL-${OPENSSL_VERSION}-${PLATFORM}.msi" OpenSSL.msi
+start /wait msiexec /i OpenSSL.msi /l*v OpenSSL-install.log /qn
 cat OpenSSL-install.log
 dir "C:\\Program Files"
+rm -f OpenSSL.msi OpenSSL-install.log
 echo "Installed OpenSSL"
 
 #
