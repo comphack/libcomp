@@ -31,8 +31,6 @@ echo "Installed Doxygen"
 echo "Installing OpenSSL"
 cp "${CACHE_DIR}/OpenSSL-${OPENSSL_VERSION}-${PLATFORM}.msi" OpenSSL.msi
 powershell -Command "Start-Process msiexec.exe -Wait -ArgumentList '/i OpenSSL.msi /l OpenSSL-install.log /qn'"
-dir "C:\\Program Files"
-cat OpenSSL-install.log
 rm -f OpenSSL.msi OpenSSL-install.log
 echo "Installed OpenSSL"
 
@@ -45,7 +43,6 @@ cd "${ROOT_DIR}/build"
 echo "Running cmake"
 cmake -DCMAKE_INSTALL_PREFIX="${ROOT_DIR}/build/install" \
     -DGENERATE_DOCUMENTATION=ON -DWINDOWS_SERVICE=ON -DUSE_SYSTEM_OPENSSL=ON \
-    -DOPENSSL_ROOT_DIR="C:\\Program Files\\OpenSSL-Win64" \
     -DCMAKE_CUSTOM_CONFIGURATION_TYPES="$CONFIGURATION" -G"$GENERATOR" ..
 
 echo "Running build"
