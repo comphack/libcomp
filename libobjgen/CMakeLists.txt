@@ -109,7 +109,7 @@ TARGET_LINK_LIBRARIES(objgen ${OPENSSL_LIBRARIES} ${ZLIB_LIBRARIES} tinyxml2
     ttvfs ttvfs_zip)
 
 IF(WIN32)
-    TARGET_LINK_LIBRARIES(objgen advapi32 iphlpapi psapi shell32 userenv ws2_32)
+    TARGET_LINK_LIBRARIES(objgen crypt32 advapi32 iphlpapi psapi shell32 userenv ws2_32)
 ENDIF(WIN32)
 
 # List of unit tests to add to CTest.
