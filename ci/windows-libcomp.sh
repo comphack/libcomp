@@ -30,6 +30,7 @@ echo "Installed Doxygen"
 
 echo "Installing OpenSSL"
 start /wait msiexec /i "${CACHE_DIR}/OpenSSL-${OPENSSL_VERSION}-${PLATFORM}.msi" /qn
+dir "C:\\Program Files"
 echo "Installed OpenSSL"
 
 #
