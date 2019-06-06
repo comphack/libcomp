@@ -30,7 +30,7 @@ echo "Installed Doxygen"
 
 echo "Installing OpenSSL"
 cp "${CACHE_DIR}/OpenSSL-${OPENSSL_VERSION}-${PLATFORM}.msi" OpenSSL.msi
-start /wait msiexec /i OpenSSL.msi /l OpenSSL-install.log /qn
+powershell Start-Process msiexec.exe -Wait -ArgumentList '/i OpenSSL.msi /l OpenSSL-install.log /qn'
 dir "C:\\Program Files"
 cat OpenSSL-install.log
 rm -f OpenSSL.msi OpenSSL-install.log
