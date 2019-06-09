@@ -174,6 +174,7 @@ SET(${PROJECT_NAME}_HDRS
     #src/MemoryFile.h
     src/MemoryManager.h
     src/Message.h
+    src/MessageClient.h
     src/MessageConnectionClosed.h
     src/MessageEncrypted.h
     src/MessageExecute.h
