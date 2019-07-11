@@ -43,6 +43,8 @@
 #include <openssl/dh.h>
 #include <openssl/md5.h>
 #include <openssl/sha.h>
+
+#include "CryptSupport.h"
 #endif
 
 #include <stdint.h>
