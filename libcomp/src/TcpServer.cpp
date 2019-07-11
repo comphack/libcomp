@@ -221,7 +221,6 @@ std::shared_ptr<Crypto::DiffieHellman> TcpServer::GetDiffieHellman() const
 void TcpServer::SetDiffieHellman(const std::shared_ptr<
     Crypto::DiffieHellman>& diffieHellman)
 {
-    LOG_ERROR("SET DH...\n");
     mDiffieHellman = diffieHellman;
 }
 
