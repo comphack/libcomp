@@ -28,7 +28,7 @@
 #include <gtest/gtest.h>
 #include <PopIgnore.h>
 
-#include <Decrypt.h>
+#include <Crypto.h>
 #include <TcpConnection.h>
 #include <TcpServer.h>
 
