@@ -53,8 +53,8 @@
 #include <string.h>
 
 #ifdef _WIN32
-#include <wincrypt.h>
 #include <windows.h>
+#include <wincrypt.h>
 
 #undef DecryptFile
 #undef EncryptFile
