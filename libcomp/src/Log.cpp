@@ -35,6 +35,14 @@
 #include <cstdio>
 #include <cstdlib>
 
+#ifdef _WIN32
+#include <windows.h>
+#include <wincon.h>
+#include <shlwapi.h>
+#else
+#include <unistd.h>
+#endif // _WIN32
+
 // zlib Includes
 #include <zlib.h>
 
@@ -69,7 +77,7 @@ public:
      * Override this to provide the log message.
      * @returns Log message
      */
-    String GetMessage() override
+    String GetMsg() const override
     {
         return {};
     }
@@ -118,14 +126,6 @@ static EnumMap<LogComponent_t, String> gLogComponentMapping = {
     {LogComponent_t::Trade, "Trade"},
     {LogComponent_t::Item, "Item"},
 };
-
-#ifdef _WIN32
-#include <windows.h>
-#include <wincon.h>
-#include <shlwapi.h>
-#else
-#include <unistd.h>
-#endif // _WIN32
 
 LogComponent_t libcomp::StringToLogComponent(const String& comp)
 {
@@ -736,7 +736,7 @@ void Log::MessageLoop()
             else
             {
                 LogMessage(pMessage->GetTimestamp(), pMessage->GetComponent(),
-                    pMessage->GetLevel(), pMessage->GetMessage());
+                    pMessage->GetLevel(), pMessage->GetMsg());
             }
 
             delete pMessage;

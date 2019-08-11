@@ -471,7 +471,7 @@ public:
      * Override this to provide the log message.
      * @returns Log message
      */
-    virtual String GetMessage() = 0;
+    virtual String GetMsg() const = 0;
 
     /**
      * Indicates if the log thread should stop.
@@ -558,7 +558,7 @@ public:
      * Override this to provide the log message.
      * @returns Log message
      */
-    String GetMessage() override
+    String GetMsg() const override
     {
         return mBind();
     }
@@ -597,7 +597,7 @@ public:
      * Override this to provide the log message.
      * @returns Log message
      */
-    String GetMessage() override
+    String GetMsg() const override
     {
         return mMessage;
     }
