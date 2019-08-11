@@ -35,14 +35,6 @@
 #include <cstdio>
 #include <cstdlib>
 
-#ifdef _WIN32
-#include <windows.h>
-#include <wincon.h>
-#include <shlwapi.h>
-#else
-#include <unistd.h>
-#endif // _WIN32
-
 // zlib Includes
 #include <zlib.h>
 
@@ -95,7 +87,7 @@ public:
 } // namespace
 
 /// Mapping of log components to their string names
-static std::map<LogComponent_t, String> gLogComponentMapping = {
+static EnumMap<LogComponent_t, String> gLogComponentMapping = {
     {LogComponent_t::General, "General"},
     {LogComponent_t::Server, "Server"},
     {LogComponent_t::Crypto, "Crypto"},
@@ -126,6 +118,14 @@ static std::map<LogComponent_t, String> gLogComponentMapping = {
     {LogComponent_t::Trade, "Trade"},
     {LogComponent_t::Item, "Item"},
 };
+
+#ifdef _WIN32
+#include <windows.h>
+#include <wincon.h>
+#include <shlwapi.h>
+#else
+#include <unistd.h>
+#endif // _WIN32
 
 LogComponent_t libcomp::StringToLogComponent(const String& comp)
 {
