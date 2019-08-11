@@ -307,14 +307,14 @@ Log::Log() : mLogFile(nullptr), mLastLog(-1337)
     mLogRotationCount = 3;
     mLogRotationDays = 1;
 
-    mThread = std::move(std::thread([&]()
+    mThread = std::thread([&]()
     {
 #if !defined(_WIN32)
         pthread_setname_np(pthread_self(), "log");
 #endif // !defined(_WIN32)
 
         MessageLoop();
-    }));
+    });
 }
 
 Log::~Log()
