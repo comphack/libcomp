@@ -23,11 +23,11 @@
         <member type="map" name="LogLevels">
             <key type="string"/>
             <value type="enum" name="LogLevel">
-                <value>DEBUG</value>
-                <value>INFO</value>
-                <value>WARNING</value>
-                <value>ERROR</value>
-                <value>CRITICAL</value>
+                <value>LEVEL_DEBUG</value>
+                <value>LEVEL_INFO</value>
+                <value>LEVEL_WARNING</value>
+                <value>LEVEL_ERROR</value>
+                <value>LEVEL_CRITICAL</value>
             </value>
         </member>
         <member type="string" name="CapturePath"/>

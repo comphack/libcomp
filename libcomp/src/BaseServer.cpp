@@ -463,16 +463,16 @@ bool BaseServer::ReadConfig(std::shared_ptr<objects::ServerConfig> config, tinyx
 
                 switch(pair.second)
                 {
-                    case objects::ServerConfig::LogLevel_t::DEBUG:
+                    case objects::ServerConfig::LogLevel_t::LEVEL_DEBUG:
                         level = Log::LOG_LEVEL_DEBUG;
                         break;
-                    case objects::ServerConfig::LogLevel_t::INFO:
+                    case objects::ServerConfig::LogLevel_t::LEVEL_INFO:
                         level = Log::LOG_LEVEL_INFO;
                         break;
-                    case objects::ServerConfig::LogLevel_t::WARNING:
+                    case objects::ServerConfig::LogLevel_t::LEVEL_WARNING:
                         level = Log::LOG_LEVEL_WARNING;
                         break;
-                    case objects::ServerConfig::LogLevel_t::ERROR:
+                    case objects::ServerConfig::LogLevel_t::LEVEL_ERROR:
                         level = Log::LOG_LEVEL_ERROR;
                         break;
                     default:
