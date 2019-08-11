@@ -28,6 +28,7 @@
 #define LIBCOMP_SRC_LOG_H
 
 #include "CString.h"
+#include "EnumMap.h"
 #include "MessageQueue.h"
 
 #include <chrono>
@@ -405,7 +406,7 @@ protected:
      * @internal
      * Levels of all the log components.
      */
-    std::unordered_map<LogComponent_t, Level_t> mComponentLogLevels;
+    EnumMap<LogComponent_t, Level_t> mComponentLogLevels;
 
     /**
      * @internal
