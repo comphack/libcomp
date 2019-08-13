@@ -47,36 +47,38 @@ namespace libcomp
  */
 enum class LogComponent_t
 {
-    Invalid,
-    General,
-    Server,
+    AccountManager,
+    ActionManager,
+    AIManager,
+    Barter,
+    Bazaar,
+    CharacterManager,
+    ChatManager,
+    Clan,
+    Connection,
     Crypto,
     Database,
-    DefinitionManager,
-    ServerDataManager,
-    SkillManager,
     DataStore,
     DataSyncManager,
-    Connection,
-    ScriptEngine,
-    ServerConstants,
-    AccountManager,
-    WebAPI,
-    CharacterManager,
-    AIManager,
-    ActionManager,
-    ChatManager,
-    FusionManager,
-    ZoneManager,
+    DefinitionManager,
+    Demon,
     EventManager,
-    MatchManager,
-    TokuseiManager,
-    Bazaar,
-    Clan,
-    Party,
     Friend,
-    Trade,
+    FusionManager,
+    General,
+    Invalid,
     Item,
+    MatchManager,
+    Party,
+    ScriptEngine,
+    Server,
+    ServerConstants,
+    ServerDataManager,
+    SkillManager,
+    TokuseiManager,
+    Trade,
+    WebAPI,
+    ZoneManager,
 };
 
 /**
@@ -666,34 +668,36 @@ static inline void name##Msg(const libcomp::String& _msg)                      \
     LOG_FUNCTION(Log##comp##Critical, comp, libcomp::Log::LOG_LEVEL_CRITICAL)
 
 // Add a log function set for each component here!
-LOG_FUNCTIONS(General)
-LOG_FUNCTIONS(Server)
+LOG_FUNCTIONS(AccountManager)
+LOG_FUNCTIONS(ActionManager)
+LOG_FUNCTIONS(AIManager)
+LOG_FUNCTIONS(Barter)
+LOG_FUNCTIONS(Bazaar)
+LOG_FUNCTIONS(CharacterManager)
+LOG_FUNCTIONS(ChatManager)
+LOG_FUNCTIONS(Clan)
+LOG_FUNCTIONS(Connection)
 LOG_FUNCTIONS(Crypto)
 LOG_FUNCTIONS(Database)
-LOG_FUNCTIONS(DefinitionManager)
-LOG_FUNCTIONS(ServerDataManager)
-LOG_FUNCTIONS(SkillManager)
 LOG_FUNCTIONS(DataStore)
 LOG_FUNCTIONS(DataSyncManager)
-LOG_FUNCTIONS(Connection)
-LOG_FUNCTIONS(ScriptEngine)
-LOG_FUNCTIONS(ServerConstants)
-LOG_FUNCTIONS(AccountManager)
-LOG_FUNCTIONS(WebAPI)
-LOG_FUNCTIONS(CharacterManager)
-LOG_FUNCTIONS(AIManager)
-LOG_FUNCTIONS(ActionManager)
-LOG_FUNCTIONS(ChatManager)
-LOG_FUNCTIONS(FusionManager)
-LOG_FUNCTIONS(ZoneManager)
+LOG_FUNCTIONS(DefinitionManager)
+LOG_FUNCTIONS(Demon)
 LOG_FUNCTIONS(EventManager)
-LOG_FUNCTIONS(MatchManager)
-LOG_FUNCTIONS(TokuseiManager)
-LOG_FUNCTIONS(Bazaar)
-LOG_FUNCTIONS(Clan)
-LOG_FUNCTIONS(Party)
 LOG_FUNCTIONS(Friend)
-LOG_FUNCTIONS(Trade)
+LOG_FUNCTIONS(FusionManager)
+LOG_FUNCTIONS(General)
 LOG_FUNCTIONS(Item)
+LOG_FUNCTIONS(MatchManager)
+LOG_FUNCTIONS(Party)
+LOG_FUNCTIONS(ScriptEngine)
+LOG_FUNCTIONS(Server)
+LOG_FUNCTIONS(ServerConstants)
+LOG_FUNCTIONS(ServerDataManager)
+LOG_FUNCTIONS(SkillManager)
+LOG_FUNCTIONS(TokuseiManager)
+LOG_FUNCTIONS(Trade)
+LOG_FUNCTIONS(WebAPI)
+LOG_FUNCTIONS(ZoneManager)
 
 #endif // LIBCOMP_SRC_LOG_H
