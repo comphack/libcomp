@@ -1226,7 +1226,7 @@ ELSE(BUILD_EXOTIC)
     ELSE(USE_MBED_TLS)
         TARGET_LINK_LIBRARIES(comp ${LIBOBJECTS_LIB} mariadbclient
             ${OPENSSL_LIBRARIES} ${SYSTEM_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT}
-            ${OBJGEN} sqlite3 squirrel sqstdlib ttvfs ttvfs_zip tinyxml2
+            ${OBJGEN_LIB} sqlite3 squirrel sqstdlib ttvfs ttvfs_zip tinyxml2
             physfs ${ZLIB_LIBRARIES} ${SYSTEMD_LIBS})
     ENDIF(USE_MBED_TLS)
 ENDIF(BUILD_EXOTIC)
