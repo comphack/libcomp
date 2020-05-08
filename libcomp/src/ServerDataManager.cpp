@@ -51,6 +51,7 @@
 #include <Event.h>
 #include <EventChoice.h>
 #include <EventITime.h>
+#include <EventOpenMenu.h>
 #include <EventPerformActions.h>
 #include <EventPrompt.h>
 #include <ItemDrop.h>
@@ -695,6 +696,16 @@ bool ServerDataManager::VerifyEventIntegrity()
                 }
             }
             break;
+        case objects::Event::EventType_t::OPEN_MENU:
+            {
+                auto e = std::dynamic_pointer_cast<
+                    objects::EventOpenMenu>(ePair.second);
+                if(e && !e->GetUseNext().IsEmpty())
+                {
+                    refIDs.insert(e->GetUseNext());
+                }
+            }
+            break;
         case objects::Event::EventType_t::PERFORM_ACTIONS:
             {
                 auto e = std::dynamic_pointer_cast<
@@ -810,6 +821,28 @@ bool ServerDataManager::VerifyEventIntegrity()
         }
     }
 
+    // Check instance events
+    for(auto& iPair : mZoneInstanceData)
+    {
+        auto instance = iPair.second;
+        for(auto eventID : { instance->GetCreateEventID(),
+            instance->GetToLobbyEventID() })
+        {
+            if(!eventID.IsEmpty() &&
+                mEventData.find(eventID.C()) == mEventData.end())
+            {
+                LogServerDataManagerError([instance, eventID]()
+                {
+                    return String("Invalid event ID reference encountered on"
+                        " zone instance %1: %2\n").Arg(instance->GetID())
+                        .Arg(eventID);
+                });
+
+                valid = false;
+            }
+        }
+    }
+
     // Check instance variant expiration timers
     for(auto& varPair : mZoneInstanceVariantData)
     {
@@ -883,6 +916,38 @@ bool ServerDataManager::VerifyItemReferences(
                 });
 
                 valid = false;
+            }
+        }
+    }
+
+    // Verify demon presents
+    for(auto& pPair : mDemonPresentData)
+    {
+        std::set<uint32_t> itemIDs;
+        for(uint32_t itemID : pPair.second->GetCommonItems())
+        {
+            itemIDs.insert(itemID);
+        }
+
+        for(uint32_t itemID : pPair.second->GetUncommonItems())
+        {
+            itemIDs.insert(itemID);
+        }
+
+        for(uint32_t itemID : pPair.second->GetRareItems())
+        {
+            itemIDs.insert(itemID);
+        }
+
+        for(uint32_t itemID : itemIDs)
+        {
+            if(!definitionManager->GetItemData(itemID))
+            {
+                LogServerDataManagerWarning([pPair, itemID]()
+                {
+                    return String("Invalid item ID encountered in demon"
+                        " present %1: %2\n").Arg(pPair.first).Arg(itemID);
+                });
             }
         }
     }
@@ -1068,37 +1133,6 @@ bool ServerDataManager::VerifyItemReferences(
                 {
                     return String("Invalid dropset ID encountered in zone"
                         " partial %1: %2\n").Arg(zPair.first).Arg(dropSetID);
-                });
-            }
-        }
-    }
-
-    for(auto& pPair : mDemonPresentData)
-    {
-        std::set<uint32_t> dropSetIDs;
-        for(uint32_t dropSetID : pPair.second->GetCommonItems())
-        {
-            dropSetIDs.insert(dropSetID);
-        }
-
-        for(uint32_t dropSetID : pPair.second->GetUncommonItems())
-        {
-            dropSetIDs.insert(dropSetID);
-        }
-
-        for(uint32_t dropSetID : pPair.second->GetRareItems())
-        {
-            dropSetIDs.insert(dropSetID);
-        }
-
-        for(uint32_t dropSetID : dropSetIDs)
-        {
-            if(mDropSetData.find(dropSetID) == mDropSetData.end())
-            {
-                LogServerDataManagerWarning([pPair, dropSetID]()
-                {
-                    return String("Invalid dropset ID encountered in demon"
-                        " present %1: %2\n").Arg(pPair.first).Arg(dropSetID);
                 });
             }
         }
@@ -2594,6 +2628,34 @@ bool ServerDataManager::LoadScript(const libcomp::String& path,
                 {
                     return String("Custom action script encountered with no "
                         "'run' function: %1\n").Arg(script->Name.C());
+                });
+
+                return false;
+            }
+        }
+        else if(type == "skilllogic")
+        {
+            fDef = root.GetFunction("prepare");
+            if(fDef.IsNull())
+            {
+                LogServerDataManagerError([&]()
+                {
+                    return String("Skill logic script encountered with no "
+                        "'prepare' function: %1\n").Arg(script->Name.C());
+                });
+
+                return false;
+            }
+        }
+        else if(type == "webapp")
+        {
+            fDef = root.GetFunction("prepare");
+            if(fDef.IsNull())
+            {
+                LogServerDataManagerError([&]()
+                {
+                    return String("Web app script encountered with no "
+                        "'prepare' function: %1\n").Arg(script->Name.C());
                 });
 
                 return false;
