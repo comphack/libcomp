@@ -786,7 +786,7 @@ bool ServerDataManager::VerifyEventIntegrity()
         valid &= invalidEventIDs.size() == 0;
     }
 
-    // Gather zone/partial objects
+    // Validate zone references
     for(auto& zdPair : mZoneData)
     {
         for(auto& zPair : zdPair.second)
@@ -799,10 +799,13 @@ bool ServerDataManager::VerifyEventIntegrity()
                     return String("Invalid event ID reference encountered"
                         " on zone %1: %2\n").Arg(zPair.first).Arg(eventID);
                 });
+
+                valid = false;
             }
         }
     }
 
+    // Validate zone partial references
     for(auto& zPair : mZonePartialData)
     {
         auto parent = std::dynamic_pointer_cast<libcomp::Object>(zPair.second);
@@ -817,6 +820,8 @@ bool ServerDataManager::VerifyEventIntegrity()
                         " zone partial %1: %2\n").Arg(zPair.first)
                         .Arg(eventID);
                 });
+
+                valid = false;
             }
         }
     }
@@ -1053,7 +1058,9 @@ bool ServerDataManager::VerifyItemReferences(
 
             for(uint32_t dropSetID : dropSetIDs)
             {
-                if(mDropSetData.find(dropSetID) == mDropSetData.end())
+                // Make sure any that are specified are not invalid
+                if(dropSetID &&
+                    mDropSetData.find(dropSetID) == mDropSetData.end())
                 {
                     LogServerDataManagerWarning([zPair, dropSetID]()
                     {
@@ -1127,7 +1134,9 @@ bool ServerDataManager::VerifyItemReferences(
 
         for(uint32_t dropSetID : dropSetIDs)
         {
-            if(mDropSetData.find(dropSetID) == mDropSetData.end())
+            // Make sure any that are specified are not invalid
+            if(dropSetID &&
+                mDropSetData.find(dropSetID) == mDropSetData.end())
             {
                 LogServerDataManagerWarning([zPair, dropSetID]()
                 {
