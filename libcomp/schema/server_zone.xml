@@ -34,7 +34,6 @@
             <value>ON_TIME</value>
             <value>ON_SYSTEMTIME</value>
             <value>ON_MOONPHASE</value>
-            <value>ON_ACTION_DELAY</value>
             <value>ON_PHASE</value>
             <value>ON_PVP_START</value>
             <value>ON_PVP_BASE_CAPTURE</value>
