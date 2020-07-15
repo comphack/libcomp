@@ -43,8 +43,11 @@
 
 #ifdef USE_MBED_TLS
 #ifdef _WIN32
-#include <wincrypt.h>
+// Windows Includes
 #include <windows.h>
+
+// Windows Crypto Includes
+#include <wincrypt.h>
 #endif  // _WIN32
 #endif  // USE_MBED_TLS
 

@@ -55,8 +55,11 @@
 #include <string.h>
 
 #ifdef _WIN32
-#include <wincrypt.h>
+// Windows Includes
 #include <windows.h>
+
+// Windows Crypto Includes
+#include <wincrypt.h>
 
 #undef DecryptFile
 #undef EncryptFile

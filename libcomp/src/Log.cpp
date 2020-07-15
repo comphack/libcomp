@@ -36,9 +36,12 @@
 #include "EnumUtils.h"
 
 #ifdef _WIN32
+// Windows Includes
+#include <windows.h>
+
+// Windows Shell Includes
 #include <shlwapi.h>
 #include <wincon.h>
-#include <windows.h>
 #else
 #include <unistd.h>
 #endif  // _WIN32

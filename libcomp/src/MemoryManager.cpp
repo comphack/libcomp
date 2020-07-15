@@ -40,8 +40,11 @@ bool libcomp::IsMemoryManagerEnabled() { return false; }
 #include <zlib.h>
 
 #ifdef _WIN32
-#include <dbghelp.h>
+// Windows Includes
 #include <windows.h>
+
+// Windows Debug Includes
+#include <dbghelp.h>
 #else  // _WIN32
 #include <cxxabi.h>
 #include <execinfo.h>
