@@ -350,7 +350,7 @@ bool ServerConstants::Initialize(const String& filePath) {
     }
 
     for (auto pair : map) {
-      uint32_t key;
+      uint32_t key = 0;
       if (!LoadInteger(pair.first, key)) {
         LogServerConstantsErrorMsg("Failed to load ADJUSTMENT_ITEMS key\n");
         return false;
@@ -380,7 +380,7 @@ bool ServerConstants::Initialize(const String& filePath) {
     }
 
     for (auto pair : map) {
-      uint32_t key;
+      uint32_t key = 0;
       if (!LoadInteger(pair.first, key)) {
         LogServerConstantsErrorMsg("Failed to load ADJUSTMENT_SKILLS key\n");
         return false;
@@ -423,7 +423,7 @@ bool ServerConstants::Initialize(const String& filePath) {
     }
 
     for (auto pair : map) {
-      uint16_t key;
+      uint16_t key = 0;
       if (!LoadInteger(pair.first, key)) {
         LogServerConstantsErrorMsg("Failed to load CAMEO_MAP key\n");
         return false;
@@ -506,7 +506,7 @@ bool ServerConstants::Initialize(const String& filePath) {
     }
 
     for (auto pair : map) {
-      uint16_t key;
+      uint16_t key = 0;
       if (!LoadInteger(pair.first, key)) {
         LogServerConstantsErrorMsg("Failed to load DEMON_BOOK_BONUS key\n");
         return false;
@@ -543,7 +543,7 @@ bool ServerConstants::Initialize(const String& filePath) {
     }
 
     for (auto pair : map) {
-      uint16_t key;
+      uint16_t key = 0;
       if (!LoadInteger(pair.first, key)) {
         LogServerConstantsErrorMsg(
             "Failed to load DEMON_BOOK_SUMMONER_BONUS key\n");
@@ -581,7 +581,7 @@ bool ServerConstants::Initialize(const String& filePath) {
     }
 
     for (auto pair : map) {
-      uint16_t key;
+      uint16_t key = 0;
       if (!LoadInteger(pair.first, key)) {
         LogServerConstantsErrorMsg(
             "Failed to load MITAMA_DEMON_BOOK_BONUS key\n");
@@ -620,7 +620,7 @@ bool ServerConstants::Initialize(const String& filePath) {
     }
 
     for (auto pair : map) {
-      uint16_t key;
+      uint16_t key = 0;
       if (!LoadInteger(pair.first, key)) {
         LogServerConstantsErrorMsg(
             "Failed to load MITAMA_DEMON_BOOK_SUMMONER_BONUS key\n");
@@ -659,7 +659,7 @@ bool ServerConstants::Initialize(const String& filePath) {
     }
 
     for (auto pair : map) {
-      uint32_t key;
+      uint32_t key = 0;
       if (!LoadInteger(pair.first, key)) {
         LogServerConstantsErrorMsg("Failed to load DEMON_CRYSTALS key\n");
         return false;
@@ -782,7 +782,7 @@ bool ServerConstants::Initialize(const String& filePath) {
     }
 
     for (auto pair : map) {
-      uint32_t key;
+      uint32_t key = 0;
       if (!LoadInteger(pair.first, key)) {
         LogServerConstantsErrorMsg("Failed to load EQUIP_MOD_EDIT_ITEMS key\n");
         return false;
@@ -812,7 +812,7 @@ bool ServerConstants::Initialize(const String& filePath) {
     }
 
     for (auto pair : map) {
-      uint32_t key;
+      uint32_t key = 0;
       if (!LoadInteger(pair.first, key)) {
         LogServerConstantsErrorMsg("Failed to load FUSION_BOOST_SKILLS key\n");
         return false;
@@ -962,7 +962,7 @@ bool ServerConstants::Initialize(const String& filePath) {
     }
 
     for (auto pair : map) {
-      uint32_t key;
+      uint32_t key = 0;
       if (!LoadInteger(pair.first, key)) {
         LogServerConstantsErrorMsg("Failed to load SPIRIT_FUSION_BOOST key\n");
         return false;
@@ -1037,7 +1037,7 @@ bool ServerConstants::Initialize(const String& filePath) {
     }
 
     for (auto pair : map) {
-      int8_t key;
+      int8_t key = 0;
       if (!LoadInteger(pair.first, key)) {
         LogServerConstantsErrorMsg("Failed to load TEAM_VALUABLES key\n");
         return false;
@@ -1074,7 +1074,7 @@ bool ServerConstants::Initialize(const String& filePath) {
     }
 
     for (auto pair : map) {
-      uint8_t key;
+      uint8_t key = 0;
       if (!LoadInteger(pair.first, key)) {
         LogServerConstantsErrorMsg(
             "Failed to load TRIFUSION_SPECIAL_DARK key\n");
