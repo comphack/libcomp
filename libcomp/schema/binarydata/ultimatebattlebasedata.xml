@@ -19,7 +19,7 @@
         <member type="f32" name="unknown15"/>
         <member type="f32" name="unknown16"/>
         <member type="f32" name="unknown17"/>
-        <member type="f32" name="unknown18"/>
+        <member type="f32" name="coinMultiplier"/>
         <member type="array" size="24" name="unknown19">
             <element type="u32"/>
         </member>

@@ -104,6 +104,7 @@
 #include <MiTitleData.h>
 #include <MiTriUnionSpecialData.h>
 #include <MiUnionData.h>
+#include <MiUltimateBattleBaseData.h>
 #include <MiUraFieldTowerData.h>
 #include <MiWarpPointData.h>
 #include <MiZoneBasicData.h>
@@ -609,6 +610,11 @@ DefinitionManager::GetTriUnionSpecialData(uint32_t sourceDemonTypeID) {
   result.unique();
 
   return result;
+}
+
+const std::shared_ptr<objects::MiUltimateBattleBaseData>
+DefinitionManager::GetUltimateBattleBaseData(uint32_t UBTypeID) {
+  return GetRecordByID(UBTypeID, mUltimateBattleBaseData);
 }
 
 const std::shared_ptr<objects::MiUraFieldTowerData>
@@ -1556,6 +1562,19 @@ bool DefinitionManager::LoadData<objects::MiTriUnionSpecialData>(
 }
 
 template <>
+bool DefinitionManager::LoadData<objects::MiUltimateBattleBaseData>(
+    DataStore *pDataStore) {
+  std::list<std::shared_ptr<objects::MiUltimateBattleBaseData>> records;
+  bool success = LoadBinaryData<objects::MiUltimateBattleBaseData>(
+      pDataStore, "Shield/UltimateBattleBaseData.sbin", true, 0, records);
+  for (auto record : records) {
+    mUltimateBattleBaseData[record->GetID()] = record;
+  }
+
+  return success;
+}
+
+template <>
 bool DefinitionManager::LoadData<objects::MiUraFieldTowerData>(
     DataStore *pDataStore) {
   std::list<std::shared_ptr<objects::MiUraFieldTowerData>> records;
@@ -1651,6 +1670,7 @@ bool DefinitionManager::LoadAllData(DataStore *pDataStore) {
   success &= LoadData<objects::MiTimeLimitData>(pDataStore);
   success &= LoadData<objects::MiTitleData>(pDataStore);
   success &= LoadData<objects::MiTriUnionSpecialData>(pDataStore);
+  success &= LoadData<objects::MiUltimateBattleBaseData>(pDataStore);
   success &= LoadData<objects::MiUraFieldTowerData>(pDataStore);
   success &= LoadData<objects::MiWarpPointData>(pDataStore);
   success &= LoadData<objects::MiZoneData>(pDataStore);
