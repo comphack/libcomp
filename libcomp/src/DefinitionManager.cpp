@@ -103,8 +103,8 @@
 #include <MiTimeLimitData.h>
 #include <MiTitleData.h>
 #include <MiTriUnionSpecialData.h>
-#include <MiUnionData.h>
 #include <MiUltimateBattleBaseData.h>
+#include <MiUnionData.h>
 #include <MiUraFieldTowerData.h>
 #include <MiWarpPointData.h>
 #include <MiZoneBasicData.h>
