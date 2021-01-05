@@ -4,7 +4,7 @@
         <member type="u32" name="ID"/>
         <member type="u32" name="unknown1"/>
         <member type="u32" name="unknown2"/>
-        <member type="u32" name="enabled"/>
+        <member type="bool" name="enabled" skip="3"/>
         <member type="u32" name="zoneID"/>
         <member type="u32" name="zoneSpotID"/>
         <member type="u32" name="zoneSpot2"/>
